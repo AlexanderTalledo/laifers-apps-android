@@ -98,4 +98,7 @@ dependencies {
     // Junit
     def junit_version = '4.12'
     testImplementation "junit:junit:$junit_version"
+
+    implementation project(':shared')
+    implementation project(':lap')
 }
