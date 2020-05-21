@@ -16,7 +16,7 @@ class SignUpViewModel : ViewModel() {
 
     fun onSignUpButtonClicked(view: View) {
         with(form) {
-            handler.handle(CreateAccountCommand(username, emailAddress, password))
+            handler.handle(CreateAccountCommand(getUsername(), getEmailAddress(), getPassword()))
         }
     }
 

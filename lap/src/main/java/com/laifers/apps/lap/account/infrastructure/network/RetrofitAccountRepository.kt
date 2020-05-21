@@ -6,7 +6,15 @@ import com.laifers.apps.lap.account.domain.AccountRepository
 class RetrofitAccountRepository : AccountRepository {
 
     override fun create(account: Account) {
-        println(account)
+        with(account) {
+            println(
+                """
+                Username: ${username.value},
+                Email: ${emailAddress.value},
+                Password: ${password.value}
+            """.trimIndent()
+            )
+        }
     }
 
 }
