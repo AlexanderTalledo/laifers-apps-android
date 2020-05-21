@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Laifers</string>
+    <string name="app_name" translatable="false">Laifers</string>
+
+    <!-- Registration screen -->
+
+    <string name="sign_up_form_title">Registration</string>
+    <string name="sign_up_form_hint_username">Username</string>
+    <string name="sign_up_form_hint_email">Email</string>
+    <string name="sign_up_form_hint_password">Password</string>
+    <string name="sign_up_form_check_box_terms">I agree to the terms of service.</string>
+    <string name="sign_up_form_btn_register">Register</string>
+
 </resources>

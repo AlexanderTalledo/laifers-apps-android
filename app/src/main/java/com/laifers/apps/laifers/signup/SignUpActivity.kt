@@ -2,9 +2,10 @@ package com.laifers.apps.laifers.signup
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.laifers.apps.laifers.R
-import kotlinx.android.synthetic.main.activity_signup.*
+import com.laifers.apps.laifers.databinding.ActivitySignupBinding
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -13,8 +14,9 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-
-        btnSignUp.setOnClickListener { viewModel.onSignUpButtonClicked("A", "B", "C") }
+        val binding = DataBindingUtil
+            .setContentView<ActivitySignupBinding>(this, R.layout.activity_signup)
+        binding.viewModel = viewModel
     }
 
 }

@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FormTitleTheme">
+        <item name="android:paddingTop">@dimen/paddingDefault</item>
+        <item name="android:paddingBottom">@dimen/paddingDefault</item>
+        <item name="android:paddingStart">@dimen/paddingDefault</item>
+        <item name="android:paddingEnd">@dimen/paddingDefault</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+    </style>
+
+    <style name="FormFieldTheme">
+        <item name="android:paddingTop">@dimen/paddingDefault</item>
+        <item name="android:paddingBottom">@dimen/paddingDefault</item>
+        <item name="android:paddingStart">@dimen/paddingDefault</item>
+        <item name="android:paddingEnd">@dimen/paddingDefault</item>
+        <item name="android:textSize">@dimen/textSizeDefault</item>
+    </style>
+
 </resources>

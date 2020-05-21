@@ -1,19 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".signup.SignUpActivity">
 
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.laifers.apps.laifers.signup.SignUpViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvSignUpTitle"
+                style="@style/FormTitleTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginDefault"
+                android:layout_marginBottom="@dimen/marginDefault"
+                android:text="@string/sign_up_form_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSignUpUsername"
+                style="@style/FormFieldTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/sign_up_form_hint_username"
+                android:inputType="text"
+                android:text="@{viewModel.form.username}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSignUpEmail"
+                style="@style/FormFieldTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/sign_up_form_hint_email"
+                android:inputType="textEmailAddress"
+                android:text="@{viewModel.form.emailAddress}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSignUpUsername" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSignUpPassword"
+                style="@style/FormFieldTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/sign_up_form_hint_password"
+                android:inputType="textPassword"
+                android:text="@{viewModel.form.password}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSignUpEmail" />
+
+            <CheckBox
+                android:id="@+id/cbSignUpTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/paddingDefault"
+                android:paddingBottom="@dimen/paddingDefault"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSignUpPassword" />
+
+            <TextView
+                android:id="@+id/tvSignUpTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_form_check_box_terms"
+                app:layout_constraintBottom_toBottomOf="@id/cbSignUpTerms"
+                app:layout_constraintStart_toEndOf="@id/cbSignUpTerms"
+                app:layout_constraintTop_toTopOf="@id/cbSignUpTerms" />
+
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::onSignUpButtonClicked}"
+                android:text="@string/sign_up_form_btn_register"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cbSignUpTerms" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

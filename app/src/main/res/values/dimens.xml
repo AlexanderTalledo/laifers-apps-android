@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Margin -->
+
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginDefault">16dp</dimen>
+    <dimen name="marginLarge">32dp</dimen>
+
+    <!-- Padding-->
+
+    <dimen name="paddingSmall">8dp</dimen>
+    <dimen name="paddingDefault">16dp</dimen>
+    <dimen name="paddingLarge">32dp</dimen>
+
+    <!-- Text-->
+
+    <dimen name="textSizeExtraLarge">42sp</dimen>
+    <dimen name="textSizeLarge">20sp</dimen>
+    <dimen name="textSizeDefault">16sp</dimen>
+    <dimen name="textSizeSmall">12sp</dimen>
+
+</resources>
