@@ -92,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{viewModel::onSignUpButtonClicked}"
+                android:enabled="@{viewModel.form.isFilledCorrectly}"
                 android:text="@string/sign_up_form_btn_register"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

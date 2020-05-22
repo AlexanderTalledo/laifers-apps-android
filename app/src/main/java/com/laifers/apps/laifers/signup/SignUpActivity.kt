@@ -17,6 +17,7 @@ class SignUpActivity : AppCompatActivity() {
         val binding = DataBindingUtil
             .setContentView<ActivitySignupBinding>(this, R.layout.activity_signup)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
 
 }

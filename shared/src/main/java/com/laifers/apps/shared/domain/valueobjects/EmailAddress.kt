@@ -1,3 +1,11 @@
 package com.laifers.apps.shared.domain.valueobjects
 
-abstract class EmailAddress(value: String) : StringValueObject(value)
+import org.apache.commons.validator.routines.EmailValidator
+
+abstract class EmailAddress(value: String) : StringValueObject(value) {
+
+    override fun isValidValue() = value.isEmailAddress()
+
+}
+
+private fun String.isEmailAddress() = EmailValidator.getInstance().isValid(this)
