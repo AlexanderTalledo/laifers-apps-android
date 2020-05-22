@@ -6,14 +6,15 @@ import com.laifers.apps.laifers.BR
 import com.laifers.apps.lap.account.domain.AccountEmailAddress
 import com.laifers.apps.lap.account.domain.AccountPassword
 import com.laifers.apps.lap.account.domain.AccountUsername
+import com.laifers.apps.shared.constants.Character.EMPTY
 import com.laifers.apps.shared.domain.InvalidValue
 
 class SignUpForm : BaseObservable() {
 
-    private var username: String = ""
-    private var emailAddress: String = ""
-    private var password: String = ""
-    private var agreeWith: Boolean = false
+    private var username: String = EMPTY
+    private var emailAddress: String = EMPTY
+    private var password: String = EMPTY
+    private var isAgreeWithTerms: Boolean = false
 
     @Bindable
     fun getUsername() = username
@@ -43,11 +44,11 @@ class SignUpForm : BaseObservable() {
     }
 
     @Bindable
-    fun getAgreeWith() = agreeWith
+    fun getIsAgreeWithTerms() = isAgreeWithTerms
 
-    fun setAgreeWith(value: Boolean) {
-        if (agreeWith == value) return
-        agreeWith = value
+    fun setIsAgreeWithTerms(value: Boolean) {
+        if (isAgreeWithTerms == value) return
+        isAgreeWithTerms = value
         notifyPropertyChanged(BR.isFilledCorrectly)
     }
 
@@ -80,7 +81,7 @@ class SignUpForm : BaseObservable() {
         false
     }
 
-    private fun isAgreeWithFilledCorrectly() = agreeWith
+    private fun isAgreeWithFilledCorrectly() = isAgreeWithTerms
 
 }
 
