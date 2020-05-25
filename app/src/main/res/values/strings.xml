@@ -7,6 +7,7 @@
     <string name="sign_up_form_hint_username">Username</string>
     <string name="sign_up_form_hint_email">Email</string>
     <string name="sign_up_form_hint_password">Password</string>
+    <string name="sign_up_form_hint_password_confirmation">Password confirmation</string>
     <string name="sign_up_form_check_box_terms">I agree to the terms of service.</string>
     <string name="sign_up_form_btn_register">Register</string>
 

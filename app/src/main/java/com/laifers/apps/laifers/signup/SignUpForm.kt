@@ -14,6 +14,7 @@ class SignUpForm : BaseObservable() {
     private var username: String = EMPTY
     private var emailAddress: String = EMPTY
     private var password: String = EMPTY
+    private var passwordConfirmation: String = EMPTY
     private var isAgreeWithTerms: Boolean = false
 
     @Bindable
@@ -44,6 +45,15 @@ class SignUpForm : BaseObservable() {
     }
 
     @Bindable
+    fun getPasswordConfirmation() = passwordConfirmation
+
+    fun setPasswordConfirmation(value: String) {
+        if (passwordConfirmation == value) return
+        passwordConfirmation = value
+        notifyPropertyChanged(BR.isFilledCorrectly)
+    }
+
+    @Bindable
     fun getIsAgreeWithTerms() = isAgreeWithTerms
 
     fun setIsAgreeWithTerms(value: Boolean) {
@@ -57,6 +67,7 @@ class SignUpForm : BaseObservable() {
         return isUsernameFilledCorrectly() &&
                 isEmailAddressFilledCorrectly() &&
                 isPasswordFilledCorrectly() &&
+                isPasswordConfirmationFilledCorrectly() &&
                 isAgreeWithFilledCorrectly()
     }
 
@@ -80,6 +91,8 @@ class SignUpForm : BaseObservable() {
     } catch (_: InvalidValue) {
         false
     }
+
+    private fun isPasswordConfirmationFilledCorrectly() = passwordConfirmation == password
 
     private fun isAgreeWithFilledCorrectly() = isAgreeWithTerms
 
