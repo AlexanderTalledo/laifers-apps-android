@@ -1,8 +1,9 @@
-package com.laifers.apps.laifers.shared.di.contexts.lap
+package com.laifers.apps.laifers.shared.di.lap
 
 import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
 import dagger.Component
 
+@LapContextScoped
 @Component(
     modules = [
         LapApplicationModule::class,

@@ -1,7 +1,7 @@
 package com.laifers.apps.laifers
 
 import com.laifers.apps.laifers.shared.di.application.DaggerApplicationComponent
-import com.laifers.apps.laifers.shared.di.contexts.lap.DaggerLapContextComponent
+import com.laifers.apps.laifers.shared.di.lap.DaggerLapContextComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 

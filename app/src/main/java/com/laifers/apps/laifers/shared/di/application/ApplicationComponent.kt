@@ -2,7 +2,7 @@ package com.laifers.apps.laifers.shared.di.application
 
 import com.laifers.apps.laifers.LaifersApplication
 import com.laifers.apps.laifers.shared.di.activities.ActivityBindingModule
-import com.laifers.apps.laifers.shared.di.contexts.lap.LapContextComponent
+import com.laifers.apps.laifers.shared.di.lap.LapContextComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
