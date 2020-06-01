@@ -6,7 +6,7 @@ import dagger.Component
 @Component(
     modules = [
         LapApplicationModule::class,
-        LapRepositoriesModule::class
+        LapInfrastructureModule::class
     ]
 )
 interface LapContextComponent {

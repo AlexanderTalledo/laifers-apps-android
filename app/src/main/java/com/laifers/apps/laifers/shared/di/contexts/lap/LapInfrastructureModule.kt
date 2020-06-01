@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class LapRepositoriesModule {
+class LapInfrastructureModule {
 
     @Provides
     fun provideAccountRepository(): AccountRepository = RetrofitAccountRepository()
