@@ -10,14 +10,14 @@ import dagger.Component
         LapInfrastructureModule::class
     ]
 )
-interface LapContextComponent {
+interface LapComponent {
 
     fun createAccountCommandHandler(): CreateAccountCommandHandler
 
     @Component.Builder
     interface Builder {
 
-        fun build(): LapContextComponent
+        fun build(): LapComponent
 
     }
 

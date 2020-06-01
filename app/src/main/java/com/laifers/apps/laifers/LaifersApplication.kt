@@ -1,26 +1,21 @@
 package com.laifers.apps.laifers
 
 import com.laifers.apps.laifers.shared.di.application.DaggerApplicationComponent
-import com.laifers.apps.laifers.shared.di.lap.DaggerLapContextComponent
-import dagger.android.AndroidInjector
+import com.laifers.apps.laifers.shared.di.lap.DaggerLapComponent
 import dagger.android.support.DaggerApplication
 
 class LaifersApplication : DaggerApplication() {
 
-    private val laifersApplication by lazy { this }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        val applicationComponent = getApplicationComponent()
-        applicationComponent.inject(laifersApplication)
-        return applicationComponent
+    override fun applicationInjector() = applicationComponent().apply {
+        inject(this@LaifersApplication)
     }
 
-    private fun getApplicationComponent() = with(DaggerApplicationComponent.builder()) {
-        lapContextComponent(getLapContextComponent())
-        application(laifersApplication)
+    private fun applicationComponent() = with(DaggerApplicationComponent.builder()) {
+        lapComponent(lapComponent())
+        application(this@LaifersApplication)
         build()
     }
 
-    private fun getLapContextComponent() = DaggerLapContextComponent.builder().build()
+    private fun lapComponent() = DaggerLapComponent.builder().build()
 
 }
