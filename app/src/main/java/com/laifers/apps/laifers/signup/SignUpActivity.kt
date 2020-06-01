@@ -13,7 +13,7 @@ class SignUpActivity : BaseBindingActivity<ActivitySignupBinding, SignUpViewMode
 
     override fun setBinding() {
         with(binding) {
-            this.viewModel = this@SignUpActivity.viewModel
+            viewModel = this@SignUpActivity.viewModel
             lifecycleOwner = this@SignUpActivity
         }
     }
