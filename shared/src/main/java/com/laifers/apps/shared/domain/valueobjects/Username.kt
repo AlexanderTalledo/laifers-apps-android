@@ -8,4 +8,4 @@ abstract class Username(value: String) : StringValueObject(value) {
 
 }
 
-private fun String.isUsername() = USERNAME_PATTERN.toRegex().matches(this)
+fun String.isUsername() = USERNAME_PATTERN.toRegex().matches(this)

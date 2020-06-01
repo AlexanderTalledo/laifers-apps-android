@@ -9,4 +9,4 @@ abstract class Password(value: String) : StringValueObject(value) {
 
 }
 
-private fun String.isPassword() = PASSWORD_PATTERN.toRegex().matches(this)
+fun String.isPassword() = PASSWORD_PATTERN.toRegex().matches(this)

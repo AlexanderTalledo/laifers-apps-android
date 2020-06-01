@@ -8,4 +8,4 @@ abstract class EmailAddress(value: String) : StringValueObject(value) {
 
 }
 
-private fun String.isEmailAddress() = EmailValidator.getInstance().isValid(this)
+fun String.isEmailAddress() = EmailValidator.getInstance().isValid(this)

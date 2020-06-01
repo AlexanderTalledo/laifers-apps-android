@@ -3,11 +3,10 @@ package com.laifers.apps.laifers.signup
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.laifers.apps.laifers.BR
-import com.laifers.apps.lap.account.domain.AccountEmailAddress
-import com.laifers.apps.lap.account.domain.AccountPassword
-import com.laifers.apps.lap.account.domain.AccountUsername
 import com.laifers.apps.shared.constants.Character.EMPTY
-import com.laifers.apps.shared.domain.InvalidValue
+import com.laifers.apps.shared.domain.valueobjects.isEmailAddress
+import com.laifers.apps.shared.domain.valueobjects.isPassword
+import com.laifers.apps.shared.domain.valueobjects.isUsername
 
 class SignUpForm : BaseObservable() {
 
@@ -71,26 +70,11 @@ class SignUpForm : BaseObservable() {
                 isAgreeWithFilledCorrectly()
     }
 
-    private fun isUsernameFilledCorrectly() = try {
-        AccountUsername(username)
-        true
-    } catch (_: InvalidValue) {
-        false
-    }
+    private fun isUsernameFilledCorrectly() = username.isUsername()
 
-    private fun isEmailAddressFilledCorrectly() = try {
-        AccountEmailAddress(emailAddress)
-        true
-    } catch (_: InvalidValue) {
-        false
-    }
+    private fun isEmailAddressFilledCorrectly() = emailAddress.isEmailAddress()
 
-    private fun isPasswordFilledCorrectly() = try {
-        AccountPassword(password)
-        true
-    } catch (_: InvalidValue) {
-        false
-    }
+    private fun isPasswordFilledCorrectly() = password.isPassword()
 
     private fun isPasswordConfirmationFilledCorrectly() = passwordConfirmation == password
 
