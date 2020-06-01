@@ -1,4 +1,4 @@
-package com.laifers.apps.shared.bus.commands
+package com.laifers.apps.shared.domain.bus.commands
 
 interface CommandHandler<C : Command> {
 
