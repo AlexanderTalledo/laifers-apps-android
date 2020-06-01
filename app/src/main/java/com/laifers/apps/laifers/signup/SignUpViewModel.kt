@@ -6,8 +6,9 @@ import com.laifers.apps.lap.account.application.create.AccountCreator
 import com.laifers.apps.lap.account.application.create.CreateAccountCommand
 import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
 import com.laifers.apps.lap.account.infrastructure.network.RetrofitAccountRepository
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel @Inject constructor() : ViewModel() {
 
     val form = SignUpForm()
 

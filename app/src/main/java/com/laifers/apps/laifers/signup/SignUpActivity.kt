@@ -7,7 +7,9 @@ import com.laifers.apps.laifers.shared.framework.activities.BaseBindingActivity
 
 class SignUpActivity : BaseBindingActivity<ActivitySignupBinding, SignUpViewModel>() {
 
-    override val viewModel by lazy { ViewModelProvider(this).get(SignUpViewModel::class.java) }
+    override val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(SignUpViewModel::class.java)
+    }
 
     override fun getLayoutId() = R.layout.activity_signup
 
