@@ -3,15 +3,11 @@ package com.laifers.apps.laifers.shared.framework.activities
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 
-abstract class BaseActivity<B : ViewDataBinding, V : ViewModel> : AppCompatActivity() {
+abstract class BaseActivity<V : ViewModel> : AppCompatActivity() {
 
-    private val activity by lazy { this }
-
-    internal lateinit var binding: B
+    internal val activity by lazy { this }
 
     internal abstract val viewModel: V
 
@@ -20,12 +16,7 @@ abstract class BaseActivity<B : ViewDataBinding, V : ViewModel> : AppCompatActiv
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setDataBinding()
-    }
-
-    private fun setDataBinding() {
-        binding = DataBindingUtil.setContentView(activity, getLayoutId())
-        binding.lifecycleOwner = this
+        setContentView(getLayoutId())
     }
 
 }
