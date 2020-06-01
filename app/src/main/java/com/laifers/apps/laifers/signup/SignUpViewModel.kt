@@ -2,20 +2,15 @@ package com.laifers.apps.laifers.signup
 
 import android.view.View
 import androidx.lifecycle.ViewModel
-import com.laifers.apps.lap.account.application.create.AccountCreator
 import com.laifers.apps.lap.account.application.create.CreateAccountCommand
 import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
-import com.laifers.apps.lap.account.domain.AccountRepository
 import javax.inject.Inject
 
 class SignUpViewModel @Inject constructor(
-    private val repository: AccountRepository
+    private val handler: CreateAccountCommandHandler
 ) : ViewModel() {
 
     val form = SignUpForm()
-
-    private val creator by lazy { AccountCreator(repository) }
-    private val handler by lazy { CreateAccountCommandHandler(creator) }
 
     fun onSignUpButtonClicked(view: View) {
         with(form) {

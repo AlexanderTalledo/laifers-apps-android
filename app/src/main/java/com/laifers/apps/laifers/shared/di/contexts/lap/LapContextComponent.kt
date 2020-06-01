@@ -1,12 +1,17 @@
 package com.laifers.apps.laifers.shared.di.contexts.lap
 
-import com.laifers.apps.lap.account.domain.AccountRepository
+import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
 import dagger.Component
 
-@Component(modules = [LapRepositoriesModule::class])
+@Component(
+    modules = [
+        LapApplicationModule::class,
+        LapRepositoriesModule::class
+    ]
+)
 interface LapContextComponent {
 
-    fun getAccountRepository(): AccountRepository
+    fun createAccountCommandHandler(): CreateAccountCommandHandler
 
     @Component.Builder
     interface Builder {
