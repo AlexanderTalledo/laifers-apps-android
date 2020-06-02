@@ -10,7 +10,7 @@ class RetrofitAccountRepository(private val service: RetrofitAccountService) : A
             service.create(
                 "",
                 RetrofitAccountService.Request(username.value, emailAddress.value, password.value)
-            )
+            ).execute()
         }
     }
 
