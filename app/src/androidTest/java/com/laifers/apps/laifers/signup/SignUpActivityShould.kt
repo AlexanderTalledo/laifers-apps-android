@@ -63,67 +63,58 @@ class SignUpActivityShould {
 
     @Test
     fun keep_sign_up_button_disabled_when_username_field_is_not_correctly_filled() {
-        writeTo(R.id.etSignUpUsername, "")
-        writeTo(R.id.etSignUpEmailAddress, "user@email.io")
-        writeTo(R.id.etSignUpPassword, "User1234@")
-        writeTo(R.id.etSignUpPasswordConfirmation, "User1234@")
-        clickOn(R.id.cbSignUpTerms)
+        fillSignUpForm(username = "")
 
         assertDisabled(R.id.btnSignUp)
     }
 
     @Test
     fun keep_sign_up_button_disabled_when_email_address_field_is_not_correctly_filled() {
-        writeTo(R.id.etSignUpUsername, "user")
-        writeTo(R.id.etSignUpEmailAddress, "")
-        writeTo(R.id.etSignUpPassword, "User1234@")
-        writeTo(R.id.etSignUpPasswordConfirmation, "User1234@")
-        clickOn(R.id.cbSignUpTerms)
+        fillSignUpForm(emailAddress = "")
 
         assertDisabled(R.id.btnSignUp)
     }
 
     @Test
     fun keep_sign_up_button_disabled_when_password_field_is_not_correctly_filled() {
-        writeTo(R.id.etSignUpUsername, "user")
-        writeTo(R.id.etSignUpEmailAddress, "user@email.io")
-        writeTo(R.id.etSignUpPassword, "")
-        writeTo(R.id.etSignUpPasswordConfirmation, "User1234@")
-        clickOn(R.id.cbSignUpTerms)
+        fillSignUpForm(password = "")
 
         assertDisabled(R.id.btnSignUp)
     }
 
     @Test
     fun keep_sign_up_button_disabled_when_password_confirmation_field_is_not_correctly_filled() {
-        writeTo(R.id.etSignUpUsername, "user")
-        writeTo(R.id.etSignUpEmailAddress, "user@email.io")
-        writeTo(R.id.etSignUpPassword, "User1234@")
-        writeTo(R.id.etSignUpPasswordConfirmation, "")
-        clickOn(R.id.cbSignUpTerms)
+        fillSignUpForm(passwordConfirmation = "")
 
         assertDisabled(R.id.btnSignUp)
     }
 
     @Test
     fun keep_sign_up_button_disabled_when_terms_are_not_accepted() {
-        writeTo(R.id.etSignUpUsername, "user")
-        writeTo(R.id.etSignUpEmailAddress, "user@email.io")
-        writeTo(R.id.etSignUpPassword, "User1234@")
-        writeTo(R.id.etSignUpPasswordConfirmation, "User1234@")
+        fillSignUpForm(isAgreeWithTerms = false)
 
         assertDisabled(R.id.btnSignUp)
     }
 
     @Test
     fun enable_sign_up_button_when_form_is_correctly_filled() {
-        writeTo(R.id.etSignUpUsername, "user")
-        writeTo(R.id.etSignUpEmailAddress, "user@email.io")
-        writeTo(R.id.etSignUpPassword, "User1234@")
-        writeTo(R.id.etSignUpPasswordConfirmation, "User1234@")
-        clickOn(R.id.cbSignUpTerms)
+        fillSignUpForm()
 
         assertEnabled(R.id.btnSignUp)
+    }
+
+    private fun fillSignUpForm(
+        username: String = "user",
+        emailAddress: String = "user@email.io",
+        password: String = "User1234@",
+        passwordConfirmation: String = "User1234@",
+        isAgreeWithTerms: Boolean = true
+    ) {
+        writeTo(R.id.etSignUpUsername, username)
+        writeTo(R.id.etSignUpEmailAddress, emailAddress)
+        writeTo(R.id.etSignUpPassword, password)
+        writeTo(R.id.etSignUpPasswordConfirmation, passwordConfirmation)
+        if (isAgreeWithTerms) clickOn(R.id.cbSignUpTerms)
     }
 
 }
