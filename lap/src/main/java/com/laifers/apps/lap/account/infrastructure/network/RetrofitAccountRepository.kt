@@ -3,16 +3,13 @@ package com.laifers.apps.lap.account.infrastructure.network
 import com.laifers.apps.lap.account.domain.Account
 import com.laifers.apps.lap.account.domain.AccountRepository
 
-class RetrofitAccountRepository : AccountRepository {
+class RetrofitAccountRepository(private val service: RetrofitAccountService) : AccountRepository {
 
     override fun create(account: Account) {
         with(account) {
-            println(
-                """
-                Username: ${username.value},
-                Email: ${emailAddress.value},
-                Password: ${password.value}
-            """.trimIndent()
+            service.create(
+                "",
+                RetrofitAccountService.Request(username.value, emailAddress.value, password.value)
             )
         }
     }
