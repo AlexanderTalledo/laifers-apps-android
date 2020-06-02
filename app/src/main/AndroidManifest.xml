@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.laifers.apps.laifers">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".LaifersApplication"
         android:allowBackup="true"
