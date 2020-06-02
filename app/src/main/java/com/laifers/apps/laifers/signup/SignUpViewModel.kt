@@ -2,8 +2,12 @@ package com.laifers.apps.laifers.signup
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.laifers.apps.lap.account.application.create.CreateAccountCommand
 import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SignUpViewModel @Inject constructor(
@@ -13,8 +17,18 @@ class SignUpViewModel @Inject constructor(
     val form = SignUpForm()
 
     fun onSignUpButtonClicked(view: View) {
-        with(form) {
-            handler.handle(CreateAccountCommand(getUsername(), getEmailAddress(), getPassword()))
+        signUp()
+    }
+
+    private fun signUp() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                with(form) {
+                    handler.handle(
+                        CreateAccountCommand(getUsername(), getEmailAddress(), getPassword())
+                    )
+                }
+            }
         }
     }
 
