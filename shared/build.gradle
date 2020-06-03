@@ -5,6 +5,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
+    // Apache
     def apache_commons_version = '1.6'
     implementation "commons-validator:commons-validator:$apache_commons_version"
 
@@ -12,4 +13,14 @@ dependencies {
     def retrofit_version = '2.9.0'
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    // TEST SUITE
+
+    // AssertJ
+    def assertj_version = '3.13.2'
+    testImplementation "org.assertj:assertj-core:$assertj_version"
+
+    //Faker
+    def faker_version = '1.0.2'
+    testImplementation "com.github.javafaker:javafaker:$faker_version"
 }

@@ -3,17 +3,16 @@ package com.laifers.apps.laifers.signup
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.laifers.apps.laifers.BR
-import com.laifers.apps.shared.domain.constants.Character.EMPTY
 import com.laifers.apps.shared.domain.valueobjects.isEmailAddress
 import com.laifers.apps.shared.domain.valueobjects.isPassword
 import com.laifers.apps.shared.domain.valueobjects.isUsername
 
 class SignUpForm : BaseObservable() {
 
-    private var username: String = EMPTY
-    private var emailAddress: String = EMPTY
-    private var password: String = EMPTY
-    private var passwordConfirmation: String = EMPTY
+    private var username: String = "Alexta"
+    private var emailAddress: String = "alexta@email.com"
+    private var password: String = "Alexta1234@"
+    private var passwordConfirmation: String = "Alexta1234@"
     private var isAgreeWithTerms: Boolean = false
 
     @Bindable

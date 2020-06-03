@@ -25,7 +25,11 @@ class SignUpViewModel @Inject constructor(
             withContext(Dispatchers.IO) {
                 with(form) {
                     handler.handle(
-                        CreateAccountCommand(getUsername(), getEmailAddress(), getPassword())
+                        CreateAccountCommand(
+                            username = getUsername(),
+                            emailAddress = getEmailAddress(),
+                            password = getPassword()
+                        )
                     )
                 }
             }
