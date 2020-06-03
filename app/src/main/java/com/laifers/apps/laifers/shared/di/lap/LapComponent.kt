@@ -1,6 +1,6 @@
 package com.laifers.apps.laifers.shared.di.lap
 
-import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
+import com.laifers.apps.core.lap.account.application.create.CreateAccountCommandHandler
 import dagger.Component
 
 @LapContextScoped

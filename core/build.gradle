@@ -1,0 +1,38 @@
+apply plugin: 'kotlin'
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    // Apache
+    def apache_commons_version = '1.6'
+    implementation "commons-validator:commons-validator:$apache_commons_version"
+
+    // Retrofit
+    def retrofit_version = '2.9.0'
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    // TEST SUITE
+
+    // AssertJ
+    def assertj_version = '3.13.2'
+    testImplementation "org.assertj:assertj-core:$assertj_version"
+
+    //Faker
+    def faker_version = '1.0.2'
+    testImplementation "com.github.javafaker:javafaker:$faker_version"
+
+    // Junit
+    def junit_version = '5.5.2'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+
+    // Mockk
+    def mockk_version = '1.9.3'
+    testImplementation "io.mockk:mockk:$mockk_version"
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

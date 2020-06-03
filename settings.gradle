@@ -1,4 +1,3 @@
 rootProject.name='Laifers'
 include ':app'
-include ':shared'
-include ':lap'
+include ':core'

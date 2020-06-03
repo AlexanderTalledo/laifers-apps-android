@@ -3,9 +3,9 @@ package com.laifers.apps.laifers.signup
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.laifers.apps.laifers.BR
-import com.laifers.apps.shared.domain.valueobjects.isEmailAddress
-import com.laifers.apps.shared.domain.valueobjects.isPassword
-import com.laifers.apps.shared.domain.valueobjects.isUsername
+import com.laifers.apps.core.shared.domain.valueobjects.isEmailAddress
+import com.laifers.apps.core.shared.domain.valueobjects.isPassword
+import com.laifers.apps.core.shared.domain.valueobjects.isUsername
 
 class SignUpForm : BaseObservable() {
 

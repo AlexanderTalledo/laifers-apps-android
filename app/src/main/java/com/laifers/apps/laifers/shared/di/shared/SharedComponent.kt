@@ -1,6 +1,6 @@
 package com.laifers.apps.laifers.shared.di.shared
 
-import com.laifers.apps.shared.domain.bus.commands.CommandBus
+import com.laifers.apps.core.shared.domain.bus.commands.CommandBus
 import dagger.Component
 
 @Component(

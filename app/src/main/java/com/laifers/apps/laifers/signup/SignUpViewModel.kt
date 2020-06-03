@@ -3,8 +3,8 @@ package com.laifers.apps.laifers.signup
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.laifers.apps.lap.account.application.create.CreateAccountCommand
-import com.laifers.apps.lap.account.application.create.CreateAccountCommandHandler
+import com.laifers.apps.core.lap.account.application.create.CreateAccountCommand
+import com.laifers.apps.core.lap.account.application.create.CreateAccountCommandHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
