@@ -3,10 +3,7 @@ package com.laifers.apps.core.lap.account.create
 import com.laifers.apps.core.lap.account.application.create.AccountCreator
 import com.laifers.apps.core.lap.account.application.create.CreateAccountCommand
 import com.laifers.apps.core.lap.account.application.create.CreateAccountCommandHandler
-import com.laifers.apps.core.lap.account.domain.AccountEmailAddressMother
-import com.laifers.apps.core.lap.account.domain.AccountIdMother
-import com.laifers.apps.core.lap.account.domain.AccountPasswordMother
-import com.laifers.apps.core.lap.account.domain.AccountUsernameMother
+import com.laifers.apps.core.lap.account.domain.*
 import com.laifers.apps.core.lap.account.infrastructure.AccountModuleUnitTestCase
 import com.laifers.apps.core.shared.domain.InvalidValue
 import org.assertj.core.api.Assertions.catchThrowable
@@ -278,6 +275,61 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
 
         }
 
+        @Nested
+        internal inner class Business {
+
+            @Test
+            fun `when tries to create an account with an id that already exists`() {
+                val command = provideRandomCreateAccountCommand()
+                val account = provideAccount(command)
+                with(account) {
+                    val errorMessage = "Already exists an account with id: ${id.value}"
+                    setRepositoryBehaviourCreate(this, AccountIdAlreadyExists(id))
+
+                    val error = catchThrowable { handleCommand(handler, command) }
+
+                    shouldHaveFailed(error, AccountIdAlreadyExists::class, errorMessage)
+                }
+            }
+
+            @Test
+            fun `when tries to create an account with a username that already exists`() {
+                val command = provideRandomCreateAccountCommand()
+                val account = provideAccount(command)
+                with(account) {
+                    val errorMessage = "Already exists an account with username: ${username.value}"
+                    setRepositoryBehaviourCreate(this, AccountUsernameAlreadyExists(username))
+
+                    val error = catchThrowable { handleCommand(handler, command) }
+
+                    shouldHaveFailed(error, AccountUsernameAlreadyExists::class, errorMessage)
+                }
+            }
+
+            @Test
+            fun `when tries to create an account with an email address that already exists`() {
+                val command = provideRandomCreateAccountCommand()
+                val account = provideAccount(command)
+                with(account) {
+                    val errorMessage =
+                        "Already exists an account with email address: ${emailAddress.value}"
+                    setRepositoryBehaviourCreate(
+                        this,
+                        AccountEmailAddressAlreadyExists(emailAddress)
+                    )
+
+                    val error = catchThrowable { handleCommand(handler, command) }
+
+                    shouldHaveFailed(error, AccountEmailAddressAlreadyExists::class, errorMessage)
+                }
+            }
+
+        }
+
     }
+
+    private fun provideRandomCreateAccountCommand() = CreateAccountCommandMother.random()
+
+    private fun provideAccount(command: CreateAccountCommand) = AccountMother.from(command)
 
 }

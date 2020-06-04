@@ -3,6 +3,7 @@ package com.laifers.apps.core.lap.account.infrastructure
 import com.laifers.apps.core.lap.account.domain.*
 import com.laifers.apps.core.shared.infrastructure.UnitTestCase
 import io.mockk.clearMocks
+import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
 
@@ -26,5 +27,9 @@ abstract class AccountModuleUnitTestCase : UnitTestCase() {
 
     internal fun provideInvalidPasswordErrorMessage(password: String) =
         provideInvalidValueErrorMessage(AccountPassword::class, password)
+
+    internal fun setRepositoryBehaviourCreate(account: Account, error: AccountError) {
+        every { repository.create(account) } throws error
+    }
 
 }
