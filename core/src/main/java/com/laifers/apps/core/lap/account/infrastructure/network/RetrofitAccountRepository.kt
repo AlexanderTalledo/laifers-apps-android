@@ -7,15 +7,16 @@ class RetrofitAccountRepository(private val service: RetrofitAccountService) : A
 
     override fun create(account: Account) {
         with(account) {
-            service.create(
-                id.value,
-                RetrofitAccountService.Request(
-                    username.value,
-                    emailAddress.value,
-                    password.value
-                )
-            ).execute()
+            service.create(id.value, requestToCreate(this)).execute()
         }
+    }
+
+    private fun requestToCreate(account: Account) = with(account) {
+        RetrofitAccountService.Request(
+            username.value,
+            emailAddress.value,
+            password.value
+        )
     }
 
 }
