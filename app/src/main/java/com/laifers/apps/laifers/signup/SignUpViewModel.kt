@@ -4,15 +4,13 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.laifers.apps.core.lap.account.application.create.CreateAccountCommand
-import com.laifers.apps.core.lap.account.application.create.CreateAccountCommandHandler
+import com.laifers.apps.core.shared.domain.bus.commands.CommandBus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SignUpViewModel @Inject constructor(
-    private val handler: CreateAccountCommandHandler
-) : ViewModel() {
+class SignUpViewModel @Inject constructor(private val commandBus: CommandBus) : ViewModel() {
 
     val form = SignUpForm()
 
@@ -24,7 +22,7 @@ class SignUpViewModel @Inject constructor(
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 with(form) {
-                    handler.handle(
+                    commandBus.dispatch(
                         CreateAccountCommand(
                             username = getUsername(),
                             emailAddress = getEmailAddress(),

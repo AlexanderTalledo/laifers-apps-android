@@ -1,6 +1,6 @@
 package com.laifers.apps.laifers.shared.di.application
 
-import com.laifers.apps.core.shared.di.lap.LapComponent
+import com.laifers.apps.laifers.shared.di.core.CoreComponent
 import com.laifers.apps.laifers.LaifersApplication
 import com.laifers.apps.laifers.shared.di.activities.ActivityBindingModule
 import dagger.BindsInstance
@@ -16,7 +16,7 @@ import dagger.android.support.DaggerApplication
         AndroidSupportInjectionModule::class,
         ApplicationModule::class
     ],
-    dependencies = [LapComponent::class]
+    dependencies = [CoreComponent::class]
 )
 interface ApplicationComponent : AndroidInjector<DaggerApplication> {
 
@@ -28,7 +28,7 @@ interface ApplicationComponent : AndroidInjector<DaggerApplication> {
         @BindsInstance
         fun application(application: LaifersApplication): Builder
 
-        fun lapComponent(component: LapComponent): Builder
+        fun coreComponent(component: CoreComponent)
 
         fun build(): ApplicationComponent
 

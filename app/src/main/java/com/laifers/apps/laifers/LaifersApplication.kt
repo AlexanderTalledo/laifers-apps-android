@@ -1,7 +1,8 @@
 package com.laifers.apps.laifers
 
-import com.laifers.apps.core.shared.di.lap.DaggerLapComponent
 import com.laifers.apps.laifers.shared.di.application.DaggerApplicationComponent
+import com.laifers.apps.laifers.shared.di.core.DaggerCoreComponent
+import com.laifers.apps.laifers.shared.di.lap.DaggerLapComponent
 import dagger.android.support.DaggerApplication
 
 class LaifersApplication : DaggerApplication() {
@@ -11,8 +12,13 @@ class LaifersApplication : DaggerApplication() {
     }
 
     private fun applicationComponent() = with(DaggerApplicationComponent.builder()) {
-        lapComponent(lapComponent())
         application(this@LaifersApplication)
+        coreComponent(coreComponent())
+        build()
+    }
+
+    private fun coreComponent() = with(DaggerCoreComponent.builder()) {
+        lapComponent(lapComponent())
         build()
     }
 
