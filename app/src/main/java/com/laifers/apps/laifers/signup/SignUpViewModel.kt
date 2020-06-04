@@ -1,6 +1,5 @@
 package com.laifers.apps.laifers.signup
 
-import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.laifers.apps.core.lap.account.application.create.CreateAccountCommand
@@ -14,7 +13,7 @@ class SignUpViewModel @Inject constructor(private val commandBus: CommandBus) : 
 
     val form = SignUpForm()
 
-    fun onSignUpButtonClicked(view: View) {
+    fun onSignUpButtonClicked() {
         signUp()
     }
 
