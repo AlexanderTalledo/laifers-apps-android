@@ -1,6 +1,6 @@
 package com.laifers.apps.laifers.shared.di.core
 
-import com.laifers.apps.laifers.shared.di.lap.LapComponent
+import com.laifers.apps.laifers.shared.di.core.lap.LapComponent
 import com.laifers.apps.core.shared.domain.bus.commands.CommandBus
 import dagger.Component
 

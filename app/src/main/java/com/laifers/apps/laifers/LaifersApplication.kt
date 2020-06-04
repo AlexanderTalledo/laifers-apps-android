@@ -2,7 +2,7 @@ package com.laifers.apps.laifers
 
 import com.laifers.apps.laifers.shared.di.application.DaggerApplicationComponent
 import com.laifers.apps.laifers.shared.di.core.DaggerCoreComponent
-import com.laifers.apps.laifers.shared.di.lap.DaggerLapComponent
+import com.laifers.apps.laifers.shared.di.core.lap.DaggerLapComponent
 import dagger.android.support.DaggerApplication
 
 class LaifersApplication : DaggerApplication() {
