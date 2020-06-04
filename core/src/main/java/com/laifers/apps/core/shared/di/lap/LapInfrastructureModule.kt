@@ -1,4 +1,4 @@
-package com.laifers.apps.laifers.shared.di.lap
+package com.laifers.apps.core.shared.di.lap
 
 import com.laifers.apps.core.lap.account.domain.AccountRepository
 import com.laifers.apps.core.lap.account.infrastructure.network.AccountRetrofitClient
