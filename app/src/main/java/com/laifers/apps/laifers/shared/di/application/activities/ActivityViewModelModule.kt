@@ -1,4 +1,4 @@
-package com.laifers.apps.laifers.shared.di.activities
+package com.laifers.apps.laifers.shared.di.application.activities
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

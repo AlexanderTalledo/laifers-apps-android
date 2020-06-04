@@ -3,7 +3,7 @@ package com.laifers.apps.laifers.shared.framework.activities
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
-import com.laifers.apps.laifers.shared.di.activities.ActivityViewModelFactory
+import com.laifers.apps.laifers.shared.di.application.activities.ActivityViewModelFactory
 import com.laifers.apps.laifers.shared.framework.lifecycle.BaseViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject

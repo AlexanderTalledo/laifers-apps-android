@@ -1,4 +1,4 @@
-package com.laifers.apps.laifers.shared.di.activities
+package com.laifers.apps.laifers.shared.di.application.activities
 
 import com.laifers.apps.laifers.signup.SignUpActivity
 import dagger.Module
