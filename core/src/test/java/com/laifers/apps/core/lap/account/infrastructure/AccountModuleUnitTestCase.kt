@@ -5,7 +5,10 @@ import com.laifers.apps.core.shared.infrastructure.UnitTestCase
 import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
+
+private const val EXPECTED_TIMES_DEFAULT_CREATE = 1
 
 abstract class AccountModuleUnitTestCase : UnitTestCase() {
 
@@ -30,6 +33,13 @@ abstract class AccountModuleUnitTestCase : UnitTestCase() {
 
     internal fun setRepositoryBehaviourCreate(account: Account, error: AccountError) {
         every { repository.create(account) } throws error
+    }
+
+    internal fun shouldHaveCreated(
+        account: Account,
+        expectedTimes: Int = EXPECTED_TIMES_DEFAULT_CREATE
+    ) {
+        verify(exactly = expectedTimes) { repository.create(account) }
     }
 
 }

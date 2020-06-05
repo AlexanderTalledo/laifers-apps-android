@@ -339,6 +339,25 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
 
     }
 
+    @Nested
+    internal inner class Succeeded {
+
+        @Nested
+        internal inner class Business {
+
+            @Test
+            fun `creating a new account`() {
+                val command = provideRandomCreateAccountCommand()
+                val account = provideAccount(command)
+
+                handleCommand(handler, command)
+
+                shouldHaveCreated(account)
+            }
+        }
+
+    }
+
     private fun provideRandomCreateAccountCommand() = CreateAccountCommandMother.random()
 
     private fun provideAccount(command: CreateAccountCommand) = AccountMother.from(command)
