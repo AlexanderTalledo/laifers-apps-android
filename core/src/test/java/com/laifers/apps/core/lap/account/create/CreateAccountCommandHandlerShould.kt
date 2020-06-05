@@ -40,7 +40,6 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
                 )
             }
 
-
             @ParameterizedTest
             @ValueSource(
                 strings = [
@@ -90,6 +89,7 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
                     "AOiih9889VDccs?¿"
                 ]
             )
+
             fun `when account password value is invalid`(password: String) {
                 testInvalidCreateAccountCommand(
                     provideCustomizableCreateAccountCommand(password = password),
