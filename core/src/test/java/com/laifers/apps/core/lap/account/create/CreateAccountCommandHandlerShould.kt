@@ -9,6 +9,7 @@ import com.laifers.apps.core.shared.domain.InvalidValue
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import kotlin.reflect.KClass
 
 class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
 
@@ -265,13 +266,7 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
                 username: String = AccountUsernameMother.random().value,
                 emailAddress: String = AccountEmailAddressMother.random().value,
                 password: String = AccountPasswordMother.random().value
-            ) =
-                CreateAccountCommandMother.create(
-                    id,
-                    username,
-                    emailAddress,
-                    password
-                )
+            ) = CreateAccountCommandMother.create(id, username, emailAddress, password)
 
         }
 
@@ -282,13 +277,15 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
             fun `when tries to create an account with an id that already exists`() {
                 val command = provideRandomCreateAccountCommand()
                 val account = provideAccount(command)
+
                 with(account) {
-                    val errorMessage = "Already exists an account with id: ${id.value}"
-                    setRepositoryBehaviourCreate(this, AccountIdAlreadyExists(id))
-
-                    val error = catchThrowable { handleCommand(handler, command) }
-
-                    shouldHaveFailed(error, AccountIdAlreadyExists::class, errorMessage)
+                    testBusinessAccountAlreadyExistsError(
+                        command,
+                        this,
+                        AccountIdAlreadyExists(id),
+                        AccountIdAlreadyExists::class,
+                        "Already exists an account with id: ${id.value}"
+                    )
                 }
             }
 
@@ -296,13 +293,15 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
             fun `when tries to create an account with a username that already exists`() {
                 val command = provideRandomCreateAccountCommand()
                 val account = provideAccount(command)
+
                 with(account) {
-                    val errorMessage = "Already exists an account with username: ${username.value}"
-                    setRepositoryBehaviourCreate(this, AccountUsernameAlreadyExists(username))
-
-                    val error = catchThrowable { handleCommand(handler, command) }
-
-                    shouldHaveFailed(error, AccountUsernameAlreadyExists::class, errorMessage)
+                    testBusinessAccountAlreadyExistsError(
+                        command,
+                        this,
+                        AccountUsernameAlreadyExists(username),
+                        AccountUsernameAlreadyExists::class,
+                        "Already exists an account with username: ${username.value}"
+                    )
                 }
             }
 
@@ -310,18 +309,30 @@ class CreateAccountCommandHandlerShould : AccountModuleUnitTestCase() {
             fun `when tries to create an account with an email address that already exists`() {
                 val command = provideRandomCreateAccountCommand()
                 val account = provideAccount(command)
+
                 with(account) {
-                    val errorMessage =
-                        "Already exists an account with email address: ${emailAddress.value}"
-                    setRepositoryBehaviourCreate(
+                    testBusinessAccountAlreadyExistsError(
+                        command,
                         this,
-                        AccountEmailAddressAlreadyExists(emailAddress)
+                        AccountEmailAddressAlreadyExists(emailAddress),
+                        AccountEmailAddressAlreadyExists::class,
+                        "Already exists an account with email address: ${emailAddress.value}"
                     )
-
-                    val error = catchThrowable { handleCommand(handler, command) }
-
-                    shouldHaveFailed(error, AccountEmailAddressAlreadyExists::class, errorMessage)
                 }
+            }
+
+            private inline fun <reified A : AccountError> testBusinessAccountAlreadyExistsError(
+                command: CreateAccountCommand,
+                account: Account,
+                expectedError: AccountError,
+                expectedErrorKClass: KClass<A>,
+                expectedErrorMessage: String
+            ) {
+                setRepositoryBehaviourCreate(account, expectedError)
+
+                val error = catchThrowable { handleCommand(handler, command) }
+
+                shouldHaveFailed(error, expectedErrorKClass, expectedErrorMessage)
             }
 
         }
